@@ -1588,6 +1588,30 @@ body.dark-theme .form-group textarea:focus {
     margin-top: 1rem;
 }
 
+/* Loading state: hide the send icon and show a spinner while submitting */
+.btn-submit.is-loading {
+    pointer-events: none;
+}
+
+.btn-submit.is-loading svg,
+.btn-submit.is-loading i {
+    display: none;
+}
+
+.btn-submit.is-loading::after {
+    content: '';
+    width: 1.05rem;
+    height: 1.05rem;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: #FFF;
+    border-radius: var(--radius-full);
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 .form-status {
     margin-top: 1.2rem;
     padding: 0.8rem;

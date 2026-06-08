@@ -343,66 +343,59 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                // Trigger visual submit animation
+                // Loading state is CSS-driven (a spinner via .is-loading). We do
+                // NOT touch the icon element here: Lucide replaces the <i> with an
+                // <svg> on load, so querying for <i> would be null and throw.
                 const submitBtn = contactForm.querySelector('.btn-submit');
                 const submitBtnText = submitBtn.querySelector('span');
-                const submitBtnIcon = submitBtn.querySelector('i');
                 const originalText = submitBtnText.textContent;
-                
-                submitBtn.disabled = true;
-                submitBtnText.textContent = "Sending...";
-                submitBtnIcon.setAttribute('data-lucide', 'loader-2');
-                submitBtnIcon.classList.add('spin-icon');
-                if (typeof lucide !== 'undefined') lucide.createIcons();
 
-                // Submit to user's real email using FormSubmit AJAX API
+                const resetButton = () => {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('is-loading');
+                    submitBtnText.textContent = originalText;
+                };
+
+                submitBtn.disabled = true;
+                submitBtn.classList.add('is-loading');
+                submitBtnText.textContent = "Sending...";
+
+                // Submit to the owner's email via the FormSubmit AJAX API.
+                // Lowercase `email` sets the reply-to; `_subject` sets the subject.
                 fetch("https://formsubmit.co/ajax/srivishnupriya48@gmail.com", {
                     method: "POST",
-                    headers: { 
+                    headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json"
                     },
                     body: JSON.stringify({
-                        Name: nameInput.value,
-                        Email: emailInput.value,
-                        Subject: subjectInput.value.trim() || "New Message from Portfolio",
-                        Message: messageInput.value,
+                        name: nameInput.value.trim(),
+                        email: emailInput.value.trim(),
+                        _subject: subjectInput.value.trim() || "New message from your portfolio",
+                        message: messageInput.value.trim(),
                         _honey: honeypot ? honeypot.value : ""
                     })
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    submitBtn.disabled = false;
-                    submitBtnText.textContent = originalText;
-                    submitBtnIcon.setAttribute('data-lucide', 'send');
-                    submitBtnIcon.classList.remove('spin-icon');
-                    if (typeof lucide !== 'undefined') lucide.createIcons();
-
-                    // Display success feedback
-                    formStatus.textContent = "Thanks for reaching out! Your message has been sent — I'll get back to you soon.";
-                    formStatus.className = "form-status success";
-                    formStatus.style.display = "block";
-
-                    // Clear fields
-                    contactForm.reset();
-                })
-                .catch(error => {
-                    submitBtn.disabled = false;
-                    submitBtnText.textContent = originalText;
-                    submitBtnIcon.setAttribute('data-lucide', 'send');
-                    submitBtnIcon.classList.remove('spin-icon');
-                    if (typeof lucide !== 'undefined') lucide.createIcons();
-
-                    // Display error feedback
-                    formStatus.textContent = "Oops! Something went wrong sending the email. Please try again or email directly at srivishnupriya48@gmail.com.";
-                    formStatus.className = "form-status error";
-                    formStatus.style.display = "block";
-                });
+                    .then(response => response.json().catch(() => ({})).then(data => {
+                        // FormSubmit signals failure with success:"false" (a string)
+                        if (!response.ok || data.success === false || data.success === "false") {
+                            throw new Error(data.message || "Submission failed");
+                        }
+                        return data;
+                    }))
+                    .then(() => {
+                        resetButton();
+                        formStatus.textContent = "Thanks for reaching out! Your message has been sent — I'll get back to you soon.";
+                        formStatus.className = "form-status success";
+                        formStatus.style.display = "block";
+                        contactForm.reset();
+                    })
+                    .catch(() => {
+                        resetButton();
+                        formStatus.textContent = "Oops! Something went wrong. Please try again, or email me directly at srivishnupriya48@gmail.com.";
+                        formStatus.className = "form-status error";
+                        formStatus.style.display = "block";
+                    });
             }
         });
 
