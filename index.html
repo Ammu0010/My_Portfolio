@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sri Vishnupriya - B.Sc Computer Science & Data Science Student. Explore projects in AI, Machine Learning, Python, and OCR technologies.">
+    <meta name="keywords" content="Sri Vishnupriya, Portfolio, Data Science, AI, Python, OCR, PaddleOCR, Gemini API, Developer, Chennai">
+    <meta name="author" content="Sri Vishnupriya">
+    <meta property="og:title" content="Sri Vishnupriya | Portfolio">
+    <meta property="og:description" content="Portfolio of Sri Vishnupriya, specializing in Computer Science, Data Science, and AI.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/avatar.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#4F46E5">
+
+    <!-- Favicon (reuses the avatar; swap for a dedicated .ico/.svg if you have one) -->
+    <link rel="icon" type="image/png" href="assets/avatar.png">
+
+    <title>Sri Vishnupriya | Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lucide Icons (pinned to a fixed version so a breaking release can't silently break icons) -->
+    <script src="https://unpkg.com/lucide@1.17.0"></script>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo" aria-label="Sri Vishnupriya Portfolio Home">
+                <img src="assets/avatar.png" alt="Sri Vishnupriya Avatar" class="logo-avatar">
+                <span class="logo-text">Sri</span><span class="logo-accent">Vishnupriya</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#internship" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle visual theme (dark/light mode)">
+                    <i data-lucide="moon" class="theme-icon moon-icon"></i>
+                    <i data-lucide="sun" class="theme-icon sun-icon"></i>
+                </button>
+                
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-toggle" class="mobile-toggle-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section" aria-label="Introduction">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="badge fade-in">Available for Roles</div>
+                    <h1 class="hero-title fade-in">
+                        Hi, I'm <span class="gradient-text">Sri Vishnupriya</span>
+                    </h1>
+                    <h2 class="hero-subtitle fade-in">
+                        <span id="typed-text">B.Sc Computer Science with Data Science Student</span><span class="typed-cursor" aria-hidden="true">|</span>
+                    </h2>
+                    <p class="hero-tagline fade-in">
+                        Building innovative solutions with AI, Python, and modern technologies. Specializing in data analysis, statistical visualization, computer vision, deep learning, OCR systems, and data-driven web applications.
+                    </p>
+                    <div class="hero-ctas fade-in">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View Projects</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="assets/Sri_Vishnupriya_Resume.pdf" download class="btn btn-secondary">
+                            <i data-lucide="download"></i>
+                            <span>Resume</span>
+                        </a>
+                        <a href="#contact" class="btn btn-accent">
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in">
+                    <div class="image-wrapper">
+                        <div class="glowing-backdrop"></div>
+                        <img src="assets/avatar.png" alt="Sri Vishnupriya Illustration" class="profile-img">
+                        <div class="floating-badge badge-1">
+                            <i data-lucide="brain"></i>
+                            <span>AI & ML</span>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i data-lucide="code"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i data-lucide="scan"></i>
+                            <span>OCR</span>
+                        </div>
+                        <div class="floating-badge badge-4">
+                            <i data-lucide="bar-chart-2"></i>
+                            <span>Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator-arrow">
+                <a href="#about" aria-label="Scroll down to About section">
+                    <i data-lucide="chevrons-down" class="bounce"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section about-section" aria-label="About Sri Vishnupriya">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-info">
+                        <h3 class="about-heading">Transforming Data into Intelligent Solutions</h3>
+                        <p class="about-text">
+                            I am a final year <strong>B.Sc Computer Science with Data Science</strong> student based in Chennai. My passion lies at the intersection of data, software engineering, and cognitive technologies. I thrive on translating complex data patterns into structured, production-ready AI applications.
+                        </p>
+                        <p class="about-text">
+                            Throughout my academic journey, I have specialized in building optical character recognition (OCR) platforms, developing computer vision pipelines with OpenCV, and integrating advanced generative AI systems via the Gemini API.
+                        </p>
+                        <p class="about-text">
+                            My career goal is to join an innovative technology team where I can apply my knowledge of Python, machine learning, and data visualization to solve real-world industry challenges.
+                        </p>
+                        <div class="about-details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Location:</span>
+                                <span class="detail-val">Chennai, India</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Email:</span>
+                                <span class="detail-val"><a href="mailto:srivishnupriya48@gmail.com">srivishnupriya48@gmail.com</a></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Education:</span>
+                                <span class="detail-val">B.Sc CS with Data Science</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-val">Open for Opportunities</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cards">
+                        <div class="about-card glass">
+                            <div class="about-card-icon">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <h4>Education Focus</h4>
+                            <p>Data science algorithms, database management, cloud computing, and statistical computing models.</p>
+                        </div>
+                        <div class="about-card glass">
+                            <div class="about-card-icon">
+                                <i data-lucide="sparkles"></i>
+                            </div>
+                            <h4>AI & Machine Learning</h4>
+                            <p>Building text extractors, NLP systems, regression architectures, and vision models with deep learning pipelines.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section" aria-label="Skills & Expertise">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Skills & Expertise</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Technical Skills Card -->
+                    <div class="skills-card glass">
+                        <div class="skills-card-header">
+                            <i data-lucide="cpu"></i>
+                            <h3>Technical Skills</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Python & SQL Programming</span>
+                                    <span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Data Analysis & Power BI</span>
+                                    <span class="skill-pct">80%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Web Development (HTML, CSS, JS)</span>
+                                    <span class="skill-pct">85%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Full Stack (React.js, Node.js, MongoDB)</span>
+                                    <span class="skill-pct">75%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar" data-width="75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Java Programming</span>
+                                    <span class="skill-pct">70%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar" data-width="70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Artificial Intelligence concepts</span>
+                                    <span class="skill-pct">75%</span>
+                                </div>
+                                <div class="skill-bar-bg">
+                                    <div class="skill-bar" data-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Platforms Card -->
+                    <div class="skills-card glass">
+                        <div class="skills-card-header">
+                            <i data-lucide="layers"></i>
+                            <h3>Tools & Software</h3>
+                        </div>
+                        <div class="tools-tags-container">
+                            <div class="tool-tag"><i data-lucide="database"></i><span>Power BI</span></div>
+                            <div class="tool-tag"><i data-lucide="file-spreadsheet"></i><span>MS Excel</span></div>
+                            <div class="tool-tag"><i data-lucide="file-text"></i><span>MS PowerPoint</span></div>
+                            <div class="tool-tag"><i data-lucide="file"></i><span>MS Word</span></div>
+                            <div class="tool-tag"><i data-lucide="palette"></i><span>Canva</span></div>
+                            <div class="tool-tag"><i data-lucide="terminal"></i><span>VS Code</span></div>
+                            <div class="tool-tag"><i data-lucide="git-branch"></i><span>Git & GitHub</span></div>
+                            <div class="tool-tag"><i data-lucide="globe"></i><span>REST APIs</span></div>
+                        </div>
+                        <div class="skills-divider"></div>
+                        <div class="skills-card-header" style="margin-top: 1.5rem;">
+                            <i data-lucide="users"></i>
+                            <h3>Soft Skills</h3>
+                        </div>
+                        <div class="soft-skills-grid">
+                            <div class="soft-skill"><i data-lucide="message-square"></i><span>Communication</span></div>
+                            <div class="soft-skill"><i data-lucide="clock"></i><span>Time Management</span></div>
+                            <div class="soft-skill"><i data-lucide="award"></i><span>Leadership</span></div>
+                            <div class="soft-skill"><i data-lucide="refresh-cw"></i><span>Adaptability</span></div>
+                            <div class="soft-skill"><i data-lucide="hearing"></i><span>Active Listener</span></div>
+                            <div class="soft-skill"><i data-lucide="search"></i><span>Problem Solving</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Experience Section -->
+        <section id="internship" class="section internship-section" aria-label="Academic & Project Experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Project Experience</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="internship-timeline">
+                    <div class="timeline-item glass">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-header">
+                            <div class="company-logo-placeholder">
+                                <i data-lucide="folder-git-2"></i>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-company">College Project Showcase</span>
+                                <h3 class="timeline-role">ZING - Inventory Management System</h3>
+                                <span class="timeline-duration">Lead Developer & Designer</span>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <h4 class="subheading">Project Overview & Goal:</h4>
+                            <p class="about-text" style="margin-bottom: 1rem;">
+                                Developed a robust, full-stack inventory management application designed to help store managers audit stock, automate replenishment updates, and log product entries seamlessly.
+                            </p>
+                            <h4 class="subheading">Key Functions:</h4>
+                            <ul>
+                                <li>Helped store managers check and view real-time stock levels, reducing inventory discrepancy.</li>
+                                <li>Developed a clean interface to manage items, allowing users to add, update, and delete products easily.</li>
+                                <li>Implemented a responsive frontend dashboard, optimizing screen layout for store-floor tablet devices.</li>
+                                <li>Configured structured MongoDB schemas for storing item metrics, quantities, and supplier details.</li>
+                            </ul>
+                            <h4 class="subheading">Technologies Used:</h4>
+                            <div class="tech-used-container">
+                                <span class="tech-tag">React.js</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">Express</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section (Interactive Grid) -->
+        <section id="tech-stack" class="section tech-stack-section" aria-label="Core Technology Stack">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Core Tech Stack</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="tech-stack-wrapper">
+                    <div class="tech-icon-card" data-tech="Python">
+                        <div class="icon-inner"><i data-lucide="terminal"></i></div>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="JavaScript">
+                        <div class="icon-inner"><i data-lucide="braces"></i></div>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="HTML5">
+                        <div class="icon-inner"><i data-lucide="file-code"></i></div>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="CSS3">
+                        <div class="icon-inner"><i data-lucide="palette"></i></div>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="React">
+                        <div class="icon-inner"><i data-lucide="atom"></i></div>
+                        <span>React</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="Git">
+                        <div class="icon-inner"><i data-lucide="git-merge"></i></div>
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="GitHub">
+                        <div class="icon-inner"><i data-lucide="github"></i></div>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="OpenCV">
+                        <div class="icon-inner"><i data-lucide="eye"></i></div>
+                        <span>OpenCV</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="AI/ML">
+                        <div class="icon-inner"><i data-lucide="brain-circuit"></i></div>
+                        <span>AI/ML</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="SQL">
+                        <div class="icon-inner"><i data-lucide="database"></i></div>
+                        <span>SQL</span>
+                    </div>
+                    <div class="tech-icon-card" data-tech="Linux">
+                        <div class="icon-inner"><i data-lucide="monitor"></i></div>
+                        <span>Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section" aria-label="Featured Projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <!-- Project Filters -->
+                <div class="project-filters" role="tablist" aria-label="Filter Projects">
+                    <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">All Projects</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" data-filter="aiml">AI & ML</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" data-filter="ocr">OCR Systems</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" data-filter="web">Web Apps</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1: AI PDF OCR System -->
+                    <div class="project-card glass" data-category="ocr aiml">
+                        <div class="project-img-wrapper">
+                            <img src="assets/proj-ocr.png" alt="AI PDF OCR System Screenshot" loading="lazy" decoding="async">
+                            <div class="project-overlay">
+                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
+                                    <i data-lucide="github"></i>
+                                </a>                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-meta-category">OCR / AI</span>
+                            <h3 class="project-title">AI PDF OCR System</h3>
+                            <p class="project-desc">
+                                End-to-end OCR processing system utilizing PaddleOCR for local document transcription and Gemini API for structured metadata categorization, table formatting, and abstract generation.
+                            </p>
+                            <div class="project-tech">
+                                <span>PaddleOCR</span>
+                                <span>Gemini API</span>
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Smart Document Scanner -->
+                    <div class="project-card glass" data-category="ocr">
+                        <div class="project-img-wrapper">
+                            <img src="assets/proj-scanner.png" alt="Smart Document Scanner Screenshot" loading="lazy" decoding="async">
+                            <div class="project-overlay">
+                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
+                                    <i data-lucide="github"></i>
+                                </a>                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-meta-category">Computer Vision</span>
+                            <h3 class="project-title">Smart Document Scanner</h3>
+                            <p class="project-desc">
+                                Real-time scanner interface leveraging OpenCV contour matching, quadrilateral thresholding, and perspective wrapping to automatically isolate, align, and filter documents under uneven lighting.
+                            </p>
+                            <div class="project-tech">
+                                <span>OpenCV</span>
+                                <span>NumPy</span>
+                                <span>Python</span>
+                                <span>Tesseract</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Gemini-powered Flashcard Generator -->
+                    <div class="project-card glass" data-category="aiml web">
+                        <div class="project-img-wrapper">
+                            <img src="assets/proj-flash.png" alt="Gemini-powered Flashcard Generator Screenshot" loading="lazy" decoding="async">
+                            <div class="project-overlay">
+                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
+                                    <i data-lucide="github"></i>
+                                </a>                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-meta-category">AI / Web Application</span>
+                            <h3 class="project-title">Gemini Flashcard Creator</h3>
+                            <p class="project-desc">
+                                An automated educational platform that parses study materials and prompts the Gemini API to output structured, active-recall Q&A flashcards instantly, supporting exports to CSV/Anki.
+                            </p>
+                            <div class="project-tech">
+                                <span>Gemini API</span>
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>CSS Modules</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Resume Analyzer -->
+                    <div class="project-card glass" data-category="aiml">
+                        <div class="project-img-wrapper">
+                            <img src="assets/proj-resume.png" alt="Resume Analyzer Screenshot" loading="lazy" decoding="async">
+                            <div class="project-overlay">
+                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
+                                    <i data-lucide="github"></i>
+                                </a>                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-meta-category">Natural Language Processing</span>
+                            <h3 class="project-title">AI Resume Analyzer</h3>
+                            <p class="project-desc">
+                                A screening platform that parses PDF CVs, maps text distributions, and matches key experience clusters with target job descriptions using cosine similarity and NLP keyword ranking.
+                            </p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>NLTK</span>
+                                <span>Scikit-Learn</span>
+                                <span>PyPDF2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: AI Study Assistant -->
+                    <div class="project-card glass" data-category="aiml web">
+                        <div class="project-img-wrapper">
+                            <img src="assets/proj-study.png" alt="AI Study Assistant Screenshot" loading="lazy" decoding="async">
+                            <div class="project-overlay">
+                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
+                                    <i data-lucide="github"></i>
+                                </a>                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-meta-category">AI / Productivity</span>
+                            <h3 class="project-title">AI Study Assistant</h3>
+                            <p class="project-desc">
+                                A specialized chatbot application featuring retrieval-augmented generation (RAG) capabilities to help students query, search, and extract citations from massive collections of textbooks and research papers.
+                            </p>
+                            <div class="project-tech">
+                                <span>LangChain</span>
+                                <span>ChromaDB</span>
+                                <span>FastAPI</span>
+                                <span>React</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section education-section" aria-label="Education Timeline">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Education</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="education-timeline-container">
+                    <!-- Education 1 -->
+                    <div class="edu-card glass">
+                        <div class="edu-year">2024 - 2027</div>
+                        <div class="edu-details">
+                            <h3 class="edu-degree">Bachelor's Degree in Computer Science with Data Science</h3>
+                            <span class="edu-inst">Bhaktavatsalam Memorial College, Chennai</span>
+                            <p class="edu-summary">
+                                Specialized academic curriculum focusing on data structures, algorithmic analysis, statistics, databases (SQL), and programming paradigms.
+                            </p>
+                            <ul class="edu-achievements">
+                                <li><i data-lucide="check" class="check-icon"></i> Specialized focus in Data Science & Machine Learning</li>
+                                <li><i data-lucide="check" class="check-icon"></i> Core foundation in Python, SQL, and Web Development</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Education 2 -->
+                    <div class="edu-card glass">
+                        <div class="edu-year">2022 - 2024</div>
+                        <div class="edu-details">
+                            <h3 class="edu-degree">Higher Secondary Education (HSC)</h3>
+                            <span class="edu-inst">Government Girls Higher Secondary School, Chennai</span>
+                            <p class="edu-summary">
+                                Advanced school curriculum with a key focus on mathematics, computer science, and natural sciences.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Education 3 -->
+                    <div class="edu-card glass">
+                        <div class="edu-year">2021 - 2022</div>
+                        <div class="edu-details">
+                            <h3 class="edu-degree">Secondary Education (SSLC)</h3>
+                            <span class="edu-inst">Immaculate Girls Higher Secondary School, Chennai</span>
+                            <p class="edu-summary">
+                                General primary and secondary education with foundational science, languages, and mathematical programs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section cert-section" aria-label="Professional Certifications">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Certifications</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="cert-grid">
+                    <!-- Cert 1 -->
+                    <div class="cert-card glass">
+                        <div class="cert-icon-container">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="cert-content">
+                            <h3 class="cert-name">Data Analysis</h3>
+                            <span class="cert-issuer">CADD CAM Solution & Quest Technology</span>
+                        </div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="cert-card glass">
+                        <div class="cert-icon-container">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="cert-content">
+                            <h3 class="cert-name">Power BI</h3>
+                            <span class="cert-issuer">Varsa Cademy</span>
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="cert-card glass">
+                        <div class="cert-icon-container">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="cert-content">
+                            <h3 class="cert-name">Full Stack Development</h3>
+                            <span class="cert-issuer">CADD CAM Solutions & Quest Technologies</span>
+                        </div>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="cert-card glass">
+                        <div class="cert-icon-container">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="cert-content">
+                            <h3 class="cert-name">Getting Started with Artificial Intelligence</h3>
+                            <span class="cert-issuer">IBM</span>
+                        </div>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="cert-card glass">
+                        <div class="cert-icon-container">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="cert-content">
+                            <h3 class="cert-name">Soft Skill Training (Communication English)</h3>
+                            <span class="cert-issuer">Winwin Enriching People</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section" aria-label="Contact Information and Form">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info-panel">
+                        <h3 class="contact-heading">Let's build something amazing together!</h3>
+                        <p class="contact-desc">
+                            Whether you're looking for an enthusiastic developer intern, want to collaborate on an AI project, or just want to connect, feel free to drop a message. I'll get back to you as soon as possible.
+                        </p>
+
+                        <div class="contact-cards-container">
+                            <div class="contact-info-card glass">
+                                <i data-lucide="mail"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:srivishnupriya48@gmail.com">srivishnupriya48@gmail.com</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info-card glass">
+                                <i data-lucide="linkedin"></i>
+                                <div>
+                                    <h4>LinkedIn</h4>
+                                    <p><a href="https://www.linkedin.com/in/sri-vishnupriya-a-8aa061398" target="_blank">linkedin.com/in/sri-vishnupriya-a</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info-card glass">
+                                <i data-lucide="github"></i>
+                                <div>
+                                    <h4>GitHub</h4>
+                                    <p><a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer">github.com/Ammu0010</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info-card glass">
+                                <i data-lucide="map-pin"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Chennai, Tamil Nadu, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-panel glass">
+                        <form id="portfolio-contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="form-name">Your Name</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="user"></i>
+                                    <input type="text" id="form-name" name="name" required placeholder="John Doe">
+                                </div>
+                                <span class="error-msg" id="name-error">Please enter your name</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="mail"></i>
+                                    <input type="email" id="form-email" name="email" required placeholder="john@example.com">
+                                </div>
+                                <span class="error-msg" id="email-error">Please enter a valid email address</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-subject">Subject (Optional)</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="text"></i>
+                                    <input type="text" id="form-subject" name="subject" placeholder="Project Collaboration">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message">Message</label>
+                                <textarea id="form-message" name="message" required placeholder="Hi Sri, I would love to work with you on..."></textarea>
+                                <span class="error-msg" id="message-error">Please write your message</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span>Send Message</span>
+                                <i data-lucide="send"></i>
+                            </button>
+                            
+                            <div class="form-status" id="form-status" aria-live="polite"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#hero" class="logo">
+                    <span class="logo-text">Sri</span><span class="logo-accent">Vishnupriya</span>
+                </a>
+                <p class="footer-tagline">Building innovative solutions with AI, Python, and modern technologies.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#internship">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-socials">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="https://www.linkedin.com/in/sri-vishnupriya-a-8aa061398" target="_blank" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    <a href="mailto:srivishnupriya48@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sri Vishnupriya. All rights reserved.</p>
+            <p class="sub">Built with passion, vanilla tech, and premium styling.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- Javascript -->
+    <script src="script.js"></script>
+</body>
+</html>
