@@ -55,6 +55,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Scroll-spy: highlight the nav link for the section currently in view ---
+    const navLinkByHash = {};
+    navLinks.forEach(link => {
+        navLinkByHash[link.getAttribute('href')] = link;
+    });
+
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const link = navLinkByHash['#' + entry.target.id];
+            if (!link) return; // section has no matching nav link (e.g. hero)
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    }, {
+        // Activation band: a thin strip near the upper-middle of the viewport,
+        // so a section becomes "current" as its top crosses that line.
+        rootMargin: '-45% 0px -50% 0px',
+        threshold: 0
+    });
+
+    document.querySelectorAll('main section[id]').forEach(section => {
+        spyObserver.observe(section);
+    });
+
     // --- Typing Effect (Hero Section) ---
     const typedTextSpan = document.getElementById('typed-text');
     const textArray = [
@@ -246,6 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const emailInput = document.getElementById('form-email');
             const subjectInput = document.getElementById('form-subject');
             const messageInput = document.getElementById('form-message');
+            const honeypot = document.getElementById('form-honey');
+
+            // Honeypot: a genuine visitor never sees or fills the hidden field.
+            // If it has a value, silently drop the submission as spam.
+            if (honeypot && honeypot.value) {
+                contactForm.reset();
+                return;
+            }
 
             let isValid = true;
 
@@ -297,7 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         Name: nameInput.value,
                         Email: emailInput.value,
                         Subject: subjectInput.value.trim() || "New Message from Portfolio",
-                        Message: messageInput.value
+                        Message: messageInput.value,
+                        _honey: honeypot ? honeypot.value : ""
                     })
                 })
                 .then(response => {
@@ -314,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (typeof lucide !== 'undefined') lucide.createIcons();
 
                     // Display success feedback
-                    formStatus.textContent = "Thank you! Your message has been sent successfully. Please check your inbox/spam folder to verify/activate FormSubmit if this is the first submission.";
+                    formStatus.textContent = "Thanks for reaching out! Your message has been sent — I'll get back to you soon.";
                     formStatus.className = "form-status success";
                     formStatus.style.display = "block";
 

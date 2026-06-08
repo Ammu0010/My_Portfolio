@@ -711,6 +711,8 @@
                     <!-- Contact Form -->
                     <div class="contact-form-panel glass">
                         <form id="portfolio-contact-form" novalidate>
+                            <!-- Honeypot: real visitors never see or fill this; bots do, and get rejected -->
+                            <input type="text" id="form-honey" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                             <div class="form-group">
                                 <label for="form-name">Your Name</label>
                                 <div class="input-wrapper">
