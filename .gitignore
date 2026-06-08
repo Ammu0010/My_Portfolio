@@ -4,9 +4,10 @@ Thumbs.db
 desktop.ini
 *.log
 
-# Editor folders
+# Editor / tooling folders
 .vscode/
 .idea/
+.claude/
 
 # Node (only if a build step is added later)
 node_modules/

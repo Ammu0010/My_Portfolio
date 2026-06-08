@@ -33,25 +33,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Mobile Menu Toggle ---
+    function openMenu() {
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        navMenu.classList.add('open');
+        // Move focus into the panel so keyboard users land inside it
+        const firstLink = navMenu.querySelector('.nav-link');
+        if (firstLink) firstLink.focus();
+    }
+
+    function closeMenu(returnFocus) {
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('open');
+        if (returnFocus) mobileToggle.focus();
+    }
+
     mobileToggle.addEventListener('click', () => {
-        const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-        mobileToggle.setAttribute('aria-expanded', !isExpanded);
-        navMenu.classList.toggle('open');
+        if (navMenu.classList.contains('open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
 
     // Close mobile menu when clicking a nav link
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('open');
-        });
+        link.addEventListener('click', () => closeMenu());
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('open')) {
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('open');
+            closeMenu();
+        }
+    });
+
+    // Close the menu on Escape and hand focus back to the toggle button
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+            closeMenu(true);
+        }
+    });
+
+    // Simple focus trap: keep Tab cycling within the open menu's links
+    navMenu.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab' || !navMenu.classList.contains('open')) return;
+        const links = navMenu.querySelectorAll('.nav-link');
+        if (links.length === 0) return;
+        const first = links[0];
+        const last = links[links.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
         }
     });
 
@@ -174,40 +209,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
+    // Show/hide cards via classes instead of inline styles + magic timeouts.
+    // The fade itself is driven by the .glass transition already on each card;
+    // once a card finishes fading out we set the `hidden` attribute so it leaves
+    // both the layout and the accessibility tree.
+    function applyFilter(filterValue) {
+        projectCards.forEach(card => {
+            const categories = card.getAttribute('data-category').split(' ');
+            const shouldShow = filterValue === 'all' || categories.includes(filterValue);
+
+            if (shouldShow) {
+                if (!card.hidden && !card.classList.contains('is-hidden')) return;
+                card.hidden = false;
+                // Next frame so the browser registers display before fading in
+                requestAnimationFrame(() => card.classList.remove('is-hidden'));
+            } else {
+                if (card.hidden) return;
+                card.classList.add('is-hidden');
+                card.addEventListener('transitionend', function onHidden(e) {
+                    if (e.propertyName !== 'opacity') return;
+                    card.removeEventListener('transitionend', onHidden);
+                    if (card.classList.contains('is-hidden')) card.hidden = true;
+                });
+            }
+        });
+    }
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            // Remove active class from other buttons
+        button.addEventListener('click', () => {
             filterButtons.forEach(btn => {
                 btn.classList.remove('active');
-                btn.setAttribute('aria-selected', 'false');
+                btn.setAttribute('aria-pressed', 'false');
             });
-            
-            // Add active to clicked button
             button.classList.add('active');
-            button.setAttribute('aria-selected', 'true');
-            
-            const filterValue = button.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                // Get categories
-                const categories = card.getAttribute('data-category').split(' ');
-                
-                if (filterValue === 'all' || categories.includes(filterValue)) {
-                    card.style.display = 'flex';
-                    // Quick fade in
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.95)';
-                    // Delay display:none to allow transition
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
+            button.setAttribute('aria-pressed', 'true');
+            applyFilter(button.getAttribute('data-filter'));
         });
     });
 

@@ -107,6 +107,27 @@ img {
     display: block;
 }
 
+/* Off-screen holder for the inline brand-icon sprite */
+.svg-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Brand icons (GitHub, LinkedIn) pulled from the sprite, styled to match
+   Lucide's stroke icons. Size/colour can be overridden per context below. */
+.brand-icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
 /* --- Scroll Progress Bar --- */
 #scroll-progress {
     position: fixed;
@@ -1052,7 +1073,8 @@ body.dark-theme .timeline-company {
     transition: var(--transition-fast);
 }
 
-.icon-inner i {
+.icon-inner i,
+.icon-inner .brand-icon {
     width: 24px;
     height: 24px;
     color: var(--text-secondary);
@@ -1085,7 +1107,8 @@ body.dark-theme .tech-icon-card:hover .icon-inner {
     background: var(--secondary);
 }
 
-.tech-icon-card:hover .icon-inner i {
+.tech-icon-card:hover .icon-inner i,
+.tech-icon-card:hover .icon-inner .brand-icon {
     color: #FFF;
 }
 
@@ -1144,6 +1167,17 @@ body.dark-theme .filter-btn.active {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+/* Filtered-out cards: fade out, then `hidden` (set by JS) removes them from
+   layout. The attribute selector overrides the flex display above. */
+.project-card[hidden] {
+    display: none;
+}
+
+.projects-grid .project-card.is-hidden {
+    opacity: 0;
+    transform: scale(0.95);
 }
 
 .project-img-wrapper {
@@ -1414,14 +1448,16 @@ body.dark-theme .edu-year {
     gap: 1.2rem;
 }
 
-.contact-info-card i {
+.contact-info-card i,
+.contact-info-card .brand-icon {
     width: 24px;
     height: 24px;
     color: var(--primary);
     flex-shrink: 0;
 }
 
-body.dark-theme .contact-info-card i {
+body.dark-theme .contact-info-card i,
+body.dark-theme .contact-info-card .brand-icon {
     color: var(--secondary);
 }
 
@@ -1661,7 +1697,8 @@ body.dark-theme .social-icons a:hover {
     border-color: var(--secondary);
 }
 
-.social-icons a i {
+.social-icons a i,
+.social-icons a .brand-icon {
     width: 18px;
     height: 18px;
 }
