@@ -421,132 +421,31 @@
                     <div class="section-line"></div>
                 </div>
 
-                <!-- Project Filters -->
-                <div class="project-filters" role="group" aria-label="Filter projects by category">
-                    <button type="button" class="filter-btn active" aria-pressed="true" data-filter="all">All Projects</button>
-                    <button type="button" class="filter-btn" aria-pressed="false" data-filter="aiml">AI & ML</button>
-                    <button type="button" class="filter-btn" aria-pressed="false" data-filter="ocr">OCR Systems</button>
-                    <button type="button" class="filter-btn" aria-pressed="false" data-filter="web">Web Apps</button>
-                </div>
-
                 <!-- Projects Grid -->
-                <div class="projects-grid">
-                    <!-- Project 1: AI PDF OCR System -->
-                    <div class="project-card glass" data-category="ocr aiml">
-                        <div class="project-img-wrapper">
-                            <img src="assets/proj-ocr.png" alt="AI PDF OCR System Screenshot" loading="lazy" decoding="async">
+                <div class="projects-grid is-single">
+                    <!-- ZING - Inventory Management System -->
+                    <div class="project-card glass" data-category="web">
+                        <div class="project-img-wrapper project-img-placeholder">
+                            <i data-lucide="boxes" class="project-placeholder-icon"></i>
                             <div class="project-overlay">
-                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
+                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View ZING source code on GitHub">
                                     <svg class="brand-icon" aria-hidden="true"><use href="#icon-github"></use></svg>
-                                </a>                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-meta-category">OCR / AI</span>
-                            <h3 class="project-title">AI PDF OCR System</h3>
-                            <p class="project-desc">
-                                End-to-end OCR processing system utilizing PaddleOCR for local document transcription and Gemini API for structured metadata categorization, table formatting, and abstract generation.
-                            </p>
-                            <div class="project-tech">
-                                <span>PaddleOCR</span>
-                                <span>Gemini API</span>
-                                <span>Python</span>
-                                <span>Streamlit</span>
+                                </a>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Project 2: Smart Document Scanner -->
-                    <div class="project-card glass" data-category="ocr">
-                        <div class="project-img-wrapper">
-                            <img src="assets/proj-scanner.png" alt="Smart Document Scanner Screenshot" loading="lazy" decoding="async">
-                            <div class="project-overlay">
-                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
-                                    <svg class="brand-icon" aria-hidden="true"><use href="#icon-github"></use></svg>
-                                </a>                            </div>
-                        </div>
                         <div class="project-info">
-                            <span class="project-meta-category">Computer Vision</span>
-                            <h3 class="project-title">Smart Document Scanner</h3>
+                            <span class="project-meta-category">Full-Stack Web App</span>
+                            <h3 class="project-title">ZING — Inventory Management System</h3>
                             <p class="project-desc">
-                                Real-time scanner interface leveraging OpenCV contour matching, quadrilateral thresholding, and perspective wrapping to automatically isolate, align, and filter documents under uneven lighting.
+                                A full-stack inventory management application that helps store managers audit stock in real time, automate replenishment updates, and log product entries through a clean, responsive dashboard backed by structured MongoDB schemas.
                             </p>
                             <div class="project-tech">
-                                <span>OpenCV</span>
-                                <span>NumPy</span>
-                                <span>Python</span>
-                                <span>Tesseract</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: Gemini-powered Flashcard Generator -->
-                    <div class="project-card glass" data-category="aiml web">
-                        <div class="project-img-wrapper">
-                            <img src="assets/proj-flash.png" alt="Gemini-powered Flashcard Generator Screenshot" loading="lazy" decoding="async">
-                            <div class="project-overlay">
-                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
-                                    <svg class="brand-icon" aria-hidden="true"><use href="#icon-github"></use></svg>
-                                </a>                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-meta-category">AI / Web Application</span>
-                            <h3 class="project-title">Gemini Flashcard Creator</h3>
-                            <p class="project-desc">
-                                An automated educational platform that parses study materials and prompts the Gemini API to output structured, active-recall Q&A flashcards instantly, supporting exports to CSV/Anki.
-                            </p>
-                            <div class="project-tech">
-                                <span>Gemini API</span>
-                                <span>React</span>
+                                <span>React.js</span>
                                 <span>Node.js</span>
-                                <span>CSS Modules</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: Resume Analyzer -->
-                    <div class="project-card glass" data-category="aiml">
-                        <div class="project-img-wrapper">
-                            <img src="assets/proj-resume.png" alt="Resume Analyzer Screenshot" loading="lazy" decoding="async">
-                            <div class="project-overlay">
-                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
-                                    <svg class="brand-icon" aria-hidden="true"><use href="#icon-github"></use></svg>
-                                </a>                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-meta-category">Natural Language Processing</span>
-                            <h3 class="project-title">AI Resume Analyzer</h3>
-                            <p class="project-desc">
-                                A screening platform that parses PDF CVs, maps text distributions, and matches key experience clusters with target job descriptions using cosine similarity and NLP keyword ranking.
-                            </p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>NLTK</span>
-                                <span>Scikit-Learn</span>
-                                <span>PyPDF2</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 5: AI Study Assistant -->
-                    <div class="project-card glass" data-category="aiml web">
-                        <div class="project-img-wrapper">
-                            <img src="assets/proj-study.png" alt="AI Study Assistant Screenshot" loading="lazy" decoding="async">
-                            <div class="project-overlay">
-                                <a href="https://github.com/Ammu0010" target="_blank" rel="noopener noreferrer" class="project-action-link" aria-label="View Source Code on GitHub">
-                                    <svg class="brand-icon" aria-hidden="true"><use href="#icon-github"></use></svg>
-                                </a>                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-meta-category">AI / Productivity</span>
-                            <h3 class="project-title">AI Study Assistant</h3>
-                            <p class="project-desc">
-                                A specialized chatbot application featuring retrieval-augmented generation (RAG) capabilities to help students query, search, and extract citations from massive collections of textbooks and research papers.
-                            </p>
-                            <div class="project-tech">
-                                <span>LangChain</span>
-                                <span>ChromaDB</span>
-                                <span>FastAPI</span>
-                                <span>React</span>
+                                <span>Express</span>
+                                <span>MongoDB</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
                             </div>
                         </div>
                     </div>

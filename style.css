@@ -1163,6 +1163,13 @@ body.dark-theme .filter-btn.active {
     gap: 2rem;
 }
 
+/* A lone project card sits centered rather than stretched across the grid */
+.projects-grid.is-single {
+    max-width: 420px;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+}
+
 .project-card {
     overflow: hidden;
     display: flex;
@@ -1185,6 +1192,24 @@ body.dark-theme .filter-btn.active {
     height: 200px;
     background: var(--gradient-hero);
     overflow: hidden;
+}
+
+/* Placeholder shown when a project has no screenshot: a centered icon */
+.project-img-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-placeholder-icon {
+    width: 56px;
+    height: 56px;
+    color: var(--primary);
+    opacity: 0.9;
+}
+
+body.dark-theme .project-placeholder-icon {
+    color: var(--secondary);
 }
 
 .project-img-wrapper img {
